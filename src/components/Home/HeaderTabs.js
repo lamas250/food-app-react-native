@@ -2,8 +2,8 @@ import { View, Text, SafeAreaView } from 'react-native'
 import React, { useState } from 'react'
 import { TouchableOpacity } from 'react-native'
 
-export default function HeaderTabs() {
-  const [ activeTab, setActiveTab] = useState('Delivery');
+export default function HeaderTabs(props) {
+  // const [ activeTab, setActiveTab] = useState('Delivery');
   return (
     <SafeAreaView>
       <View
@@ -12,8 +12,8 @@ export default function HeaderTabs() {
           alignSelf: "center"
         }}
       >
-        <HeaderButton text="Delivery" activeTab={activeTab} setActiveTab={setActiveTab} />
-        <HeaderButton text="Pickup" activeTab={activeTab} setActiveTab={setActiveTab} />
+        <HeaderButton text="Delivery" activeTab={props.activeTab} setActiveTab={props.setActiveTab} />
+        <HeaderButton text="Pickup" activeTab={props.activeTab} setActiveTab={props.setActiveTab} />
       </View>
     </SafeAreaView>
   )
