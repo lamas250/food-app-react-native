@@ -10,15 +10,15 @@ import { Divider } from 'react-native-elements/dist/divider/Divider'
 
 
 
-export default function Home() {
-  const [ restaurantData, setRestaurantData] = useState(localRestaurants);
-  const [ city, setCity] = useState('BeloHorizonte');
+export default function Home({navigation}) {
+  const [ restaurantData, setRestaurantData] = useState([]);
+  const [ city, setCity] = useState('Hollywood');
   const [ activeTab, setActiveTab ] = useState('Delivery');
 
   useEffect(() => {
     getRestaurantesFromYelp();
   },[city, activeTab]);
-
+ 
   const getRestaurantesFromYelp = () => {
     const url = `https://api.yelp.com/v3/businesses/search?term=restaurants&location=${city}`
     fetch(url,{
@@ -38,7 +38,7 @@ export default function Home() {
         <SearchBar setCity={setCity} />
       </View>
       <Categories />
-      <RestaurantItem restaurantData={restaurantData} /> 
+      <RestaurantItem restaurantData={restaurantData} navigation={navigation} /> 
       <Divider width={1} />
       <BottomTabs />
     </SafeAreaView>
